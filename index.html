@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Lara Orlandi Analytics — Login</title>
+<style>
+  body { font-family: sans-serif; max-width: 420px; margin: 80px auto; text-align: center; }
+  a.btn {
+    display: inline-block; margin-top: 24px; padding: 14px 28px;
+    background: #000; color: #fff; text-decoration: none; border-radius: 6px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <h1>Lara Orlandi Analytics</h1>
+  <p>Ferramenta pessoal de análise de desempenho do perfil @_lara.orlandi no TikTok.</p>
+  <a class="btn" id="loginBtn" href="#">Entrar com TikTok</a>
+
+  <script>
+    const CLIENT_KEY = "awe9o1mqktaot14z";
+    const REDIRECT_URI = "https://laraorlandi.github.io/TikTok-Verify/callback.html";
+    const SCOPES = "user.info.basic,user.info.stats,video.list";
+    const STATE = Math.random().toString(36).slice(2);
+
+    const authUrl = "https://www.tiktok.com/v2/auth/authorize/"
+      + "?client_key=" + encodeURIComponent(CLIENT_KEY)
+      + "&scope=" + encodeURIComponent(SCOPES)
+      + "&response_type=code"
+      + "&redirect_uri=" + encodeURIComponent(REDIRECT_URI)
+      + "&state=" + STATE;
+
+    document.getElementById("loginBtn").href = authUrl;
+  </script>
+</body>
+</html>
